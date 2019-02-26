@@ -1444,7 +1444,7 @@ ${tender_data_lots[0].yearlyPaymentsPercentageRange}  xpath=(//div[@ng-include='
     Sleep  1s
     Wait Until Element Is Visible  xpath=//div[contains(text(),'Ваше рішення поставлено в чергу на відправкув Prozorro')]  ${COMMONWAIT}
     Підписати ЕЦП  ${index}
-    Sleep  60s
+    Sleep  120s
 
 
 Відхилити кваліфікацію
@@ -3070,7 +3070,7 @@ Get Item Number
 #    ...  AND  Wait Visibility And Click Element  xpath=//div[contains(text(),'Пiдпис замовника')]/following-sibling::div[@data-id='no-ecp']
 #    ...  AND  Завантажити ЕЦП
     Reload Page
-    Sleep  120s
+    Sleep  60s
 
 
 Скасування рішення кваліфікаційної комісії
@@ -3126,7 +3126,7 @@ Get Item Number
 
 
 Дочекатися завантаження сторінки підписання ЕЦП
-    ${passed}=  Run Keyword And Return Status  Element Should Be Visible  xpath=//select[@id='CAsServersSelect']
+    ${passed}=  Run Keyword And Return Status  Element Should Be Enabled  xpath=//select[@id='CAsServersSelect']
     Run Keyword Unless  '${passed}' == 'PASS'  Reload Page
 
 
