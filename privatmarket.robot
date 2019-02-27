@@ -3100,14 +3100,21 @@ Get Item Number
     Run Keyword Unless  'checked' in '${class}'  Click Element  xpath=//a[contains(@ng-class, 'lot-parts')]
     Wait Until Element Is Visible  xpath=//a[@data-id='status' and contains(text(),'Очікує ЕЦП / КЕП')]
     Wait Visibility And Click Element  xpath=//a[@data-id='status' and contains(text(),'Очікує ЕЦП / КЕП')]/following-sibling::span
-    Wait Visibility And Click Element  xpath=//button[@data-id='addAwardFileEcp']
+#    Wait Visibility And Click Element  xpath=//button[@data-id='addAwardFileEcp']
 #    Wait Visibility And Click Element  xpath=(//img[contains(@ng-src,'icon-plus')])[last()]
 #    Wait Visibility And Click Element  xpath=//div[contains(text(),'Пiдпис замовника')]/following-sibling::div[@data-id='no-ecp']
 
 
+Відкрити вікно підпису ЕЦП
+    Wait Visibility And Click Element  xpath=//button[@data-id='addAwardFileEcp']
+    Select Window  title=sign worker
+
+
 Завантажити ЕЦП
     Sleep  10s
-    Select Window  title=sign worker
+    Run Keyword If  '${mode}' == 'open_framework'
+    ...  Wait Until Keyword Succeeds  3min  10s  Відкрити вікно підпису ЕЦП
+#    Select Window  title=sign worker
     Wait Until Keyword Succeeds  2min  10s  Дочекатися завантаження сторінки підписання ЕЦП
     Wait Until Element Is Visible  css=#CAsServersSelect  ${COMMONWAIT}
 #    Wait Visibility And Click Element  xpath=//select[@id='CAsServersSelect']//option[19]
