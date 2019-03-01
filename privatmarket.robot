@@ -3052,8 +3052,8 @@ Get Item Number
     Wait Visibility And Click Element  xpath=(//div[@class='lot-info ng-scope' and contains(.,'Кваліфікація учасників') ]//table[@class='bids']//a[@class='ng-binding'])[${award_index}]
 
     Wait Until Element Is Visible  xpath=//label[@for='chkSelfQualified']  ${COMMONWAIT}
-    Execute JavaScript    document.getElementById('chkSelfQualified').checked = true
-    Execute JavaScript    document.getElementById('chkSelfEligible').checked = true;
+    Execute JavaScript    document.getElementById('chkSelfQualified').click()
+    Execute JavaScript    document.getElementById('chkSelfEligible').click()
 #    Run Keyword Unless  'single_item' in '${scenarios_name}' or 'до звіту про укладений договір' in '${TEST_NAME}' or 'belowThreshold' in '${tender_type}'  Wait Visibility And Click Element  xpath=//label[@for='chkSelfQualified']
 #    Run Keyword Unless  'до переговорної процедури' in '${TEST_NAME}' or 'single_item' in '${scenarios_name}' or 'до звіту про укладений договір' in '${TEST_NAME}' or 'belowThreshold' in '${tender_type}'  Wait Visibility And Click Element  xpath=//label[@for='chkSelfEligible']
     Wait Visibility And Click Element  xpath=//div[@class='award-section award-actions ng-scope']//button[@data-id='setActive']
